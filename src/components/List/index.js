@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import Note from '../Note';
 import InputForm from '../InputForm';
+import {connect} from 'react-redux';
 
-export default class List extends Component{
-    constructor(props){
-        super(props);
-        this.state = {arr: ['Nguyen Duy', 'Lung Linh']};
-    }
+class List extends Component{
     remove(index){
         this.state.arr.splice(index, 1);
         this.setState(this.state);
@@ -19,10 +16,15 @@ export default class List extends Component{
         return(
             <div>
                 <InputForm handleAdd={this.add.bind(this)} />
-                {this.state.arr.map((e, i) =>
+                {console.log(this.props)}
+                {this.props.arr.map((e, i) =>
                     <Note index={i} handleRemove={this.remove.bind(this)} key={i} >{e}</Note>
                 )}
             </div>
         )
     }
 }
+
+export default connect((state) => {
+    return {arr: state.arr}
+})(List);

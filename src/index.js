@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import List from './components/List';
-
+import {Provider} from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<List />, document.getElementById('root'));
-registerServiceWorker();
 let preElement = document.createElement('div');
 preElement.setAttribute('id', 'debug');
-document.getElementById('root').appendChild(preElement);
-require('./Exp');
+document.querySelector('body').insertBefore(preElement, document.getElementById('root').nextSibling);
+let store = require('./Exp');
+
+ReactDOM.render(
+    <Provider store={store}>
+        <List />
+    </Provider>
+    ,
+    document.getElementById('root'));
+registerServiceWorker();
