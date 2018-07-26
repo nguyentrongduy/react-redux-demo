@@ -4,20 +4,12 @@ import InputForm from '../InputForm';
 import {connect} from 'react-redux';
 
 class List extends Component{
-    remove(index){
-        this.state.arr.splice(index, 1);
-        this.setState(this.state);
-    }
-    add(value){
-        this.state.arr.push(value);
-        this.setState(this.state);
-    }
     render(){
         return(
             <div>
-                <InputForm handleAdd={this.add.bind(this)} />
+                <InputForm />
                 {this.props.arr.map((e, i) =>
-                    <Note index={i} handleRemove={this.remove.bind(this)} key={i} >{e}</Note>
+                    <Note index={i} key={i} >{e}</Note>
                 )}
             </div>
         )

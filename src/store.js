@@ -1,8 +1,8 @@
-let redux = require('redux');
-let reducer = require('./reducers');
+import { createStore, compose } from 'redux';
+import rootReducer from './reducers';
 
 // debug redux
-let store = redux.createStore(reducer, redux.compose(
+let store = createStore(rootReducer, compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
@@ -11,4 +11,4 @@ store.subscribe(() => {
     document.getElementById('debug').innerHTML = JSON.stringify(store.getState());
 });
 
-module.exports = store;
+export default  store;

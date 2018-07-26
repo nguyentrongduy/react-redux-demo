@@ -1,10 +1,10 @@
-const IsAddItemReducer = (state = false, action) => {
+import {ActionTypes} from '../constants/ActionTypes';
+
+export default function(state = false, action) {
     switch (action.type){
-        case 'IS_ADDING':
+        case ActionTypes.IS_ADDING:
             return !state;
         default:
             return state;
     }
 };
-
-module.exports = IsAddItemReducer;

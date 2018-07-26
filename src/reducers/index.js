@@ -1,11 +1,9 @@
-let redux = require('redux');
-let arrReducer = require('./arr');
-let IsAddItemReducer = require('./isAdding');
+import { combineReducers } from 'redux';
+import arrReducer from './arr';
+import IsAddItemReducer from './isAdding';
 
 //binding properties of state with reducer function
-let reducer = redux.combineReducers({
+export default combineReducers({
     arr: arrReducer,
     isAdding: IsAddItemReducer
 });
-
-module.exports = reducer;

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { RemoveItemInList } from '../../actions/test';
 
 class Note extends Component {
     removeNote(){
         let {index, dispatch} = this.props;
-        dispatch({type: 'REMOVE_ITEM', index});
+        dispatch(RemoveItemInList(index));
     }
     render(){
         return(
