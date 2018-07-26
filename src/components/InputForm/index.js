@@ -1,25 +1,25 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default class InputForm extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {isAdding: false}
-    }
+class InputForm extends React.Component{
     setShowForm(){
-        this.state.isAdding = !this.state.isAdding;
-        this.setState(this.state);
+        // var dispatch = this.props.dispatch(); ~~
+        let {dispatch} = this.props;
+        dispatch({type: 'IS_ADDING'});
     }
     handleSubmit(e){
         e.preventDefault();
+        let {dispatch} = this.props;
         if(this.refs.txt.value.length > 0)
         {
-            this.props.handleAdd(this.refs.txt.value)
+            dispatch({type: 'ADD_ITEM', value: this.refs.txt.value});
+            // this.props.handleAdd(this.refs.txt.value);
             this.refs.txt.value = "";
             this.setShowForm();
         }
     }
     render(){
-        if(this.state.isAdding)
+        if(this.props.isAdding)
             return(
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <input type="text" placeholder={"test name"} ref={"txt"} /> <br/>
@@ -31,3 +31,7 @@ export default class InputForm extends React.Component{
         )
     }
 }
+
+export default connect((state) => {
+    return {isAdding: state.isAdding}
+})(InputForm)
