@@ -16,7 +16,6 @@ class List extends Component{
         return(
             <div>
                 <InputForm handleAdd={this.add.bind(this)} />
-                {console.log(this.props)}
                 {this.props.arr.map((e, i) =>
                     <Note index={i} handleRemove={this.remove.bind(this)} key={i} >{e}</Note>
                 )}
