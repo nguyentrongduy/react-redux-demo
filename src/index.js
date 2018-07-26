@@ -8,3 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<List />, document.getElementById('root'));
 registerServiceWorker();
+let preElement = document.createElement('div');
+preElement.setAttribute('id', 'debug');
+document.getElementById('root').appendChild(preElement);
+require('./Exp');
