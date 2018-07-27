@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Note from '../Note';
 import InputForm from '../InputForm';
 import {connect} from 'react-redux';
+import SideBar from '../sideBar';
 
 class List extends Component{
     render(){
@@ -11,6 +12,7 @@ class List extends Component{
                 {this.props.arr.map((e, i) =>
                     <Note index={i} key={i} >{e}</Note>
                 )}
+                <SideBar />
             </div>
         )
     }
