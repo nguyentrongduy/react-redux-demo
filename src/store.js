@@ -11,4 +11,4 @@ store.subscribe(() => {
     document.getElementById('debug').innerHTML = JSON.stringify(store.getState());
 });
 
-export default  store;
+export default store;
